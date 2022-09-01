@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>何教授</title>
+        <style>
+            :root {
+                --cube-size: 40vmin;
+                --side-size: calc(var(--cube-size) / 2);
+                --perspective: calc(var(--cube-size) * 3);
+                --gap: 0.5vmin;
+            }
+
+            html,
+            body {
+                height: 100%;
+            }
+
+            body {
+                display: grid;
+                place-items: center;
+                overflow: hidden;
+                background-color: black;
+            }
+
+            .container {
+                position: relative;
+                -webkit-perspective: var(--perspective);
+                perspective: var(--perspective);
+            }
+
+            .cube {
+                position: relative;
+                width: var(--cube-size);
+                height: var(--cube-size);
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                -webkit-animation: cube-rotation 20s linear infinite;
+                animation: cube-rotation 20s linear infinite;
+            }
+
+            .side {
+                position: absolute;
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-gap: var(--gap);
+                width: calc(var(--cube-size) - var(--gap));
+                height: calc(var(--cube-size) - var(--gap));
+            }
+
+            .tile {
+                position: relative;
+                -webkit-animation: tile-color 2s linear alternate infinite, tile-glow 1s linear infinite;
+                animation: tile-color 2s linear alternate infinite, tile-glow 1s linear infinite;
+                -webkit-animation-delay: calc(var(--index) * -0.025s), calc(var(--index) * -0.25s);
+                animation-delay: calc(var(--index) * -0.025s), calc(var(--index) * -0.25s);
+            }
+
+            .front {
+                -webkit-transform: rotateY(0deg) translateZ(var(--side-size));
+                transform: rotateY(0deg) translateZ(var(--side-size));
+            }
+
+            .back {
+                -webkit-transform: rotateY(180deg) translateZ(var(--side-size));
+                transform: rotateY(180deg) translateZ(var(--side-size));
+            }
+
+            .right {
+                -webkit-transform: rotateY(90deg) translateZ(var(--side-size));
+                transform: rotateY(90deg) translateZ(var(--side-size));
+            }
+
+            .left {
+                -webkit-transform: rotateY(-90deg) translateZ(var(--side-size));
+                transform: rotateY(-90deg) translateZ(var(--side-size));
+            }
+
+            .top {
+                -webkit-transform: rotateX(90deg) translateZ(var(--side-size));
+                transform: rotateX(90deg) translateZ(var(--side-size));
+            }
+
+            .bottom {
+                -webkit-transform: rotateX(-90deg) translateZ(var(--side-size));
+                transform: rotateX(-90deg) translateZ(var(--side-size));
+            }
+
+            @-webkit-keyframes cube-rotation {
+                from {
+                    -webkit-transform: rotateX(-20deg) rotateY(0);
+                    transform: rotateX(-20deg) rotateY(0);
+                }
+
+                to {
+                    -webkit-transform: rotateX(-20deg) rotateY(1turn);
+                    transform: rotateX(-20deg) rotateY(1turn);
+                }
+            }
+
+            @keyframes cube-rotation {
+                from {
+                    -webkit-transform: rotateX(-20deg) rotateY(0);
+                    transform: rotateX(-20deg) rotateY(0);
+                }
+
+                to {
+                    -webkit-transform: rotateX(-20deg) rotateY(1turn);
+                    transform: rotateX(-20deg) rotateY(1turn);
+                }
+            }
+
+            @-webkit-keyframes tile-glow {
+                50% {
+                    opacity: 0.5;
+                }
+            }
+
+            @keyframes tile-glow {
+                50% {
+                    opacity: 0.5;
+                }
+            }
+
+            @-webkit-keyframes tile-color {
+                0% {
+                    background-color: red;
+                }
+
+                25% {
+                    background-color: orange;
+                }
+
+                50% {
+                    background-color: green;
+                }
+
+                100% {
+                    background-color: blue;
+                }
+
+                75% {
+                    background-color: yellow;
+                }
+            }
+
+            @keyframes tile-color {
+                0% {
+                    background-color: red;
+                }
+
+                25% {
+                    background-color: orange;
+                }
+
+                50% {
+                    background-color: green;
+                }
+
+                100% {
+                    background-color: blue;
+                }
+
+                75% {
+                    background-color: yellow;
+                }
+            }
+        </style>
+        <script>
+            window.console = window.console || function (t) { };
+        </script>
+        <script>
+            if (document.location.search.match(/type=embed/gi)) {
+                window.parent.postMessage("resize", "*");
+            }
+        </script>
+        </head>
+
+        <body translate="no">
+            <div class="container">
+                <div class="cube">
+                    <div class="side front">
+                        <div class="tile" style="--index: 1;"></div>
+                        <div class="tile" style="--index: 2;"></div>
+                        <div class="tile" style="--index: 3;"></div>
+                        <div class="tile" style="--index: 4;"></div>
+                        <div class="tile" style="--index: 5;"></div>
+                        <div class="tile" style="--index: 6;"></div>
+                        <div class="tile" style="--index: 7;"></div>
+                        <div class="tile" style="--index: 8;"></div>
+                        <div class="tile" style="--index: 9;"></div>
+                        <div class="tile" style="--index: 10;"></div>
+                        <div class="tile" style="--index: 11;"></div>
+                        <div class="tile" style="--index: 12;"></div>
+                        <div class="tile" style="--index: 13;"></div>
+                        <div class="tile" style="--index: 14;"></div>
+                        <div class="tile" style="--index: 15;"></div>
+                        <div class="tile" style="--index: 16;"></div>
+                        <div class="tile" style="--index: 17;"></div>
+                        <div class="tile" style="--index: 18;"></div>
+                        <div class="tile" style="--index: 19;"></div>
+                        <div class="tile" style="--index: 20;"></div>
+                        <div class="tile" style="--index: 21;"></div>
+                        <div class="tile" style="--index: 22;"></div>
+                        <div class="tile" style="--index: 23;"></div>
+                        <div class="tile" style="--index: 24;"></div>
+                        <div class="tile" style="--index: 25;"></div>
+                    </div>
+                    <div class="side back">
+                        <div class="tile" style="--index: 1;"></div>
+                        <div class="tile" style="--index: 2;"></div>
+                        <div class="tile" style="--index: 3;"></div>
+                        <div class="tile" style="--index: 4;"></div>
+                        <div class="tile" style="--index: 5;"></div>
+                        <div class="tile" style="--index: 6;"></div>
+                        <div class="tile" style="--index: 7;"></div>
+                        <div class="tile" style="--index: 8;"></div>
+                        <div class="tile" style="--index: 9;"></div>
+                        <div class="tile" style="--index: 10;"></div>
+                        <div class="tile" style="--index: 11;"></div>
+                        <div class="tile" style="--index: 12;"></div>
+                        <div class="tile" style="--index: 13;"></div>
+                        <div class="tile" style="--index: 14;"></div>
+                        <div class="tile" style="--index: 15;"></div>
+                        <div class="tile" style="--index: 16;"></div>
+                        <div class="tile" style="--index: 17;"></div>
+                        <div class="tile" style="--index: 18;"></div>
+                        <div class="tile" style="--index: 19;"></div>
+                        <div class="tile" style="--index: 20;"></div>
+                        <div class="tile" style="--index: 21;"></div>
+                        <div class="tile" style="--index: 22;"></div>
+                        <div class="tile" style="--index: 23;"></div>
+                        <div class="tile" style="--index: 24;"></div>
+                        <div class="tile" style="--index: 25;"></div>
+                    </div>
+                    <div class="side right">
+                        <div class="tile" style="--index: 1;"></div>
+                        <div class="tile" style="--index: 2;"></div>
+                        <div class="tile" style="--index: 3;"></div>
+                        <div class="tile" style="--index: 4;"></div>
+                        <div class="tile" style="--index: 5;"></div>
+                        <div class="tile" style="--index: 6;"></div>
+                        <div class="tile" style="--index: 7;"></div>
+                        <div class="tile" style="--index: 8;"></div>
+                        <div class="tile" style="--index: 9;"></div>
+                        <div class="tile" style="--index: 10;"></div>
+                        <div class="tile" style="--index: 11;"></div>
+                        <div class="tile" style="--index: 12;"></div>
+                        <div class="tile" style="--index: 13;"></div>
+                        <div class="tile" style="--index: 14;"></div>
+                        <div class="tile" style="--index: 15;"></div>
+                        <div class="tile" style="--index: 16;"></div>
+                        <div class="tile" style="--index: 17;"></div>
+                        <div class="tile" style="--index: 18;"></div>
+                        <div class="tile" style="--index: 19;"></div>
+                        <div class="tile" style="--index: 20;"></div>
+                        <div class="tile" style="--index: 21;"></div>
+                        <div class="tile" style="--index: 22;"></div>
+                        <div class="tile" style="--index: 23;"></div>
+                        <div class="tile" style="--index: 24;"></div>
+                        <div class="tile" style="--index: 25;"></div>
+                    </div>
+                    <div class="side left">
+                        <div class="tile" style="--index: 1;"></div>
+                        <div class="tile" style="--index: 2;"></div>
+                        <div class="tile" style="--index: 3;"></div>
+                        <div class="tile" style="--index: 4;"></div>
+                        <div class="tile" style="--index: 5;"></div>
+                        <div class="tile" style="--index: 6;"></div>
+                        <div class="tile" style="--index: 7;"></div>
+                        <div class="tile" style="--index: 8;"></div>
+                        <div class="tile" style="--index: 9;"></div>
+                        <div class="tile" style="--index: 10;"></div>
+                        <div class="tile" style="--index: 11;"></div>
+                        <div class="tile" style="--index: 12;"></div>
+                        <div class="tile" style="--index: 13;"></div>
+                        <div class="tile" style="--index: 14;"></div>
+                        <div class="tile" style="--index: 15;"></div>
+                        <div class="tile" style="--index: 16;"></div>
+                        <div class="tile" style="--index: 17;"></div>
+                        <div class="tile" style="--index: 18;"></div>
+                        <div class="tile" style="--index: 19;"></div>
+                        <div class="tile" style="--index: 20;"></div>
+                        <div class="tile" style="--index: 21;"></div>
+                        <div class="tile" style="--index: 22;"></div>
+                        <div class="tile" style="--index: 23;"></div>
+                        <div class="tile" style="--index: 24;"></div>
+                        <div class="tile" style="--index: 25;"></div>
+                    </div>
+                    <div class="side top">
+                        <div class="tile" style="--index: 1;"></div>
+                        <div class="tile" style="--index: 2;"></div>
+                        <div class="tile" style="--index: 3;"></div>
+                        <div class="tile" style="--index: 4;"></div>
+                        <div class="tile" style="--index: 5;"></div>
+                        <div class="tile" style="--index: 6;"></div>
+                        <div class="tile" style="--index: 7;"></div>
+                        <div class="tile" style="--index: 8;"></div>
+                        <div class="tile" style="--index: 9;"></div>
+                        <div class="tile" style="--index: 10;"></div>
+                        <div class="tile" style="--index: 11;"></div>
+                        <div class="tile" style="--index: 12;"></div>
+                        <div class="tile" style="--index: 13;"></div>
+                        <div class="tile" style="--index: 14;"></div>
+                        <div class="tile" style="--index: 15;"></div>
+                        <div class="tile" style="--index: 16;"></div>
+                        <div class="tile" style="--index: 17;"></div>
+                        <div class="tile" style="--index: 18;"></div>
+                        <div class="tile" style="--index: 19;"></div>
+                        <div class="tile" style="--index: 20;"></div>
+                        <div class="tile" style="--index: 21;"></div>
+                        <div class="tile" style="--index: 22;"></div>
+                        <div class="tile" style="--index: 23;"></div>
+                        <div class="tile" style="--index: 24;"></div>
+                        <div class="tile" style="--index: 25;"></div>
+                    </div>
+                    <div class="side bottom">
+                        <div class="tile" style="--index: 1;"></div>
+                        <div class="tile" style="--index: 2;"></div>
+                        <div class="tile" style="--index: 3;"></div>
+                        <div class="tile" style="--index: 4;"></div>
+                        <div class="tile" style="--index: 5;"></div>
+                        <div class="tile" style="--index: 6;"></div>
+                        <div class="tile" style="--index: 7;"></div>
+                        <div class="tile" style="--index: 8;"></div>
+                        <div class="tile" style="--index: 9;"></div>
+                        <div class="tile" style="--index: 10;"></div>
+                        <div class="tile" style="--index: 11;"></div>
+                        <div class="tile" style="--index: 12;"></div>
+                        <div class="tile" style="--index: 13;"></div>
+                        <div class="tile" style="--index: 14;"></div>
+                        <div class="tile" style="--index: 15;"></div>
+                        <div class="tile" style="--index: 16;"></div>
+                        <div class="tile" style="--index: 17;"></div>
+                        <div class="tile" style="--index: 18;"></div>
+                        <div class="tile" style="--index: 19;"></div>
+                        <div class="tile" style="--index: 20;"></div>
+                        <div class="tile" style="--index: 21;"></div>
+                        <div class="tile" style="--index: 22;"></div>
+                        <div class="tile" style="--index: 23;"></div>
+                        <div class="tile" style="--index: 24;"></div>
+                        <div class="tile" style="--index: 25;"></div>
+                    </div>
+                </div>
+            </div>
+
+    </body>
+</html>
