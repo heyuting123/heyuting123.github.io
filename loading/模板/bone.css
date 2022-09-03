@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+.cc .row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.cc .row .box {
+  margin-top: 20px;
+  width: 470px;
+  height: 400px;
+}
+/*# sourceMappingURL=./bone.css.map */
