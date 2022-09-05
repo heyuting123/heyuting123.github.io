@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .stage {
+        margin: 100px auto;
+        width: 1200px;
+        height: 600px;
+        background-color: lightblue;
+        display: flex;
+      }
+      .stage div {
+        width: 105px;
+        height: 100%;
+        background-size: auto 100%;
+        background-position: top center;
+        /* background-repeat: no-repeat; */
+
+        transition: all 400ms;
+      }
+      .stage div:nth-child(1) {
+        background-image: url("./img/1.jpg");
+      }
+      .stage div:nth-child(2) {
+        
+        background-image: url("./img/2.jpg");
+      }
+      .stage div:nth-child(3) {
+        background-image: url("./img/3.jpg");
+      }
+      .stage div:nth-child(4) {
+        background-image: url("./img/4.jpg");
+      }
+      .stage div:nth-child(5) {
+        background-image: url("./img/5.jpg");
+      }
+      .stage div:nth-child(6) {
+        background-image: url("./img/6.jpg");
+        width: 500px;
+      }
+      .stage div:nth-child(7) {
+        background-image: url("./img/7.jpg");
+      }
+      .stage div:nth-child(8) {
+        background-image: url("./img/8.jpg");
+      }
+      .stage div:nth-child(9) {
+        background-image: url("./img/9.jpg");
+      }
+      .stage div:nth-child(10) {
+        background-image: url("./img/10.jpg");
+      }
+      .stage div:nth-child(11) {
+        background-image: url("./img/11.jpg");
+      }
+      .stage div:nth-child(11) {
+        background-image: url("./img/12.jpg");
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <script>
+      var imgs = document.querySelectorAll(".stage div");
+      imgs.forEach(function (img, i) {
+        // console.log(img, i);
+        img.onmousemove = function () {
+          //   console.log(i);
+          //   imgs[i].style.width = "300px";
+          imgs.forEach(function (el, index) {
+            if (index === i) {
+              el.style.width = "500px";
+            } else {
+              el.style.width = "105px";
+            }
+          });
+        };
+      });
+    </script>
+  </body>
+</html>
