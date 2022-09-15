@@ -1,0 +1,99 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    perspective: 500px;
+    background-color: black;
+  }
+  .box {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(-45deg);
+    animation: round 6s infinite linear;
+    font-size: 45px;
+    color: azure;
+    font-weight: bold;
+  }
+  .box:hover div{
+    transform:  translateZ(200px);
+  }
+  .box:hover .front{
+    transform:  translateZ(200px);
+  }
+  .box:hover .back{
+    transform: rotateY(180deg) translateZ(200px);
+  }
+  .box:hover .left{
+    transform: rotateY(-90deg) translateZ(200px);
+  }
+  .box:hover .right{
+    transform: rotateY(90deg) translateZ(200px);
+  }
+  .box:hover .top{
+    transform:rotateX(90deg)  translateZ(200px);
+  }
+  .box:hover .bottom{
+    transform: rotateX(-90deg) translateZ(200px);
+  }
+  @keyframes round{
+   0%{
+    transform: rotateX(0deg);
+   }
+    50%{
+      transform: rotateX(180deg);
+    }
+    100%{
+      transform: rotateX(360deg) rotate(360deg);
+    }
+  }
+  .box > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.7s;
+    border: 2px solid white;
+  }
+  .box > div img{
+    opacity: 0.6;
+  }
+  .box .front {
+    background-color: rgba(173, 216, 230, 0.499);
+    transform: translateZ(100px);
+  }
+  .box .back {
+    background-color: rgba(240, 128, 128, 0.526);
+    /* transform: rotateY(45deg); */
+    transform: rotateY(180deg) translateZ(100px);
+  }
+
+  .box .left {
+    background-color: rgba(144, 238, 144, 0.436);
+    transform: rotateY(-90deg) translateZ(100px);
+  }
+  .box .right {
+    background-color: rgba(32, 178, 171, 0.474);
+    transform: rotateY(90deg) translateZ(100px);
+
+  }
+  .box .top{
+    background-color: rgba(127, 255, 212, 0.793);
+    transform:rotateX(90deg)  translateZ(100px);
+  }
+  .box .top img{
+    width: 200px;
+    height: 200px;
+  }
+  .box .bottom{
+    background-color: rgba(255, 0, 0, 0.759);
+    transform: rotateX(-90deg) translateZ(100px);
+  }
+  .box .bottom img{
+    width: 200px;
+    height: 200px;
+  }
