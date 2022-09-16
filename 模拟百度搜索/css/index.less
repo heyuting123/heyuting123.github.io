@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+input{
+    outline:none;
+    border:none;
+}
+img{
+    vertical-align: bottom;
+}
+body{
+    font-size:16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+li{
+    list-style:none;
+}
+.box{
+    width: 654px;
+    margin:0 auto;
+    text-align: center;
+    img{
+        width: 270px;
+        height: 129px;
+        margin-bottom: 30px;
+    }
+    .search{
+        overflow: hidden;
+        position: relative;
+        .search_input{
+            height: 40px;
+            width: 516px;
+            padding-left: 14px;
+            padding-right: 14px;
+            border:2px solid #c4c7ce;
+            border-right:none;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            float: left;
+            font-size:16px;
+            &:focus{
+                border-color:#4e6ef2;
+            }
+        }
+        .fa-camera{
+            position: absolute;
+            left: 516px;
+            top: 50%;
+            transform: translateY(-50%);
+            color:#999daa;
+            cursor: pointer;
+            &:hover{
+                color:#4e6ef2;
+            }
+        }
+        .search_btn{
+            float: left;
+            width: 108px;
+            height: 44px;
+            text-align: center;
+            line-height: 44px;
+            color:white;
+            background: #4e6ef2;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            cursor: pointer;
+            &:hover{
+                background: #4662d9;
+            }
+        }
+    }
+
+    .content{
+        border:2px solid #4e6ef2;
+        border-top:none;
+        border-radius: 0 0 8px 8px;
+        width: 516px;
+        padding-left: 14px;
+        padding-right: 14px;
+        position: relative;
+        left: 0;
+        top: -25px;
+        z-index:1;
+        background: white;
+        text-align:left;
+        display: none;
+        .line{
+            height: 1px;
+            background: #c4c7ce;
+            margin-top: 18px;
+        }
+        ul li{
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        ul li.current{
+            color:#315efb;
+        }
+    }
+}

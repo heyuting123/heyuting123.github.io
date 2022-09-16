@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="box">
+        <a href="javascript:void(0)"><img src="images/logo.png" /></a>
+
+        <!-- 搜索层 -->
+        <div class="search">
+            <input type="text" class="search_input" />
+            <i class="fa fa-camera"></i>
+            <span class="search_btn">百度一下</span>
+        </div>
+
+        <!-- 内容层 -->
+        <div class="content">
+            <div class="line"></div>
+            <ul class="suggestion_list">
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/jsonp.js"></script>
+    <script>
+        var search_input = document.querySelector(".search_input");
+        var content = document.querySelector(".content");
+        var box = document.querySelector(".box");
+        search_input.onfocus = function () {
+            var searchInputVal = (this.value.trim());
+            if (searchInputVal == "") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+                // search_input.oninput();
+            }
+        }
+
+        /* document.onclick = function () {
+            content.style.display = "none";
+        } */
+
+        var timer2 = null;
+        search_input.onblur = function(){
+            clearTimeout( timer2 )
+            timer2 = setTimeout(function(){
+                content.style.display = "none";
+            },120)
+        }
+
+
+        var suggestion_list = document.querySelector(".suggestion_list");
+        var timer = null;
+        search_input.oninput = function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                var searchInputVal = (this.value.trim());
+                if (searchInputVal == "") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                    jsonp({
+                        url: "http://suggestion.baidu.com/su",
+                        data: {
+                            "wd": searchInputVal
+                        },
+                        callback: "cb",
+                        success: function (result) {
+                            var data = result.s;
+                            suggestion_list.innerHTML = "";
+
+                            if (data.length == 0) {
+                                var newLi = document.createElement("li");
+                                newLi.innerHTML = "无相关数据,请更换关键词试试";
+                                suggestion_list.appendChild(newLi);
+                            } else {
+                                data.forEach(function (item, index) {
+                                    var newLi = document.createElement("li");
+                                    newLi.innerHTML = item;
+                                    suggestion_list.appendChild(newLi);
+                                    newLi.onclick = function () {
+                                        search_input.value = this.innerHTML;
+                                        content.style.display = "none";
+                                    }
+                                })
+                            }
+                        }
+                    })
+                }
+            }.bind(this), 200)
+        }
+
+        var search_btn = document.querySelector(".search_btn");
+        search_btn.onclick = function () {
+            location.href = "http://www.baidu.com/s?wd=" + search_input.value;
+        }
+
+
+        suggestion_list.onmouseover = function ( e ) {
+            if( e.target.nodeName == "LI" ){
+                if( document.querySelector(".suggestion_list li.current") ){
+                    document.querySelector(".suggestion_list li.current").removeAttribute("class");
+                }
+                e.target.className = "current";
+            }
+        }
+    </script>
+</body>
+
+</html>
