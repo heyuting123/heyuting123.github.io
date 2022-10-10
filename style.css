@@ -100,7 +100,7 @@ ul {
     width: 200px;
     height: 200px;
     margin: 15px;
-    background-color: rgb(14, 235, 242);
+    /* background-color: rgb(14, 235, 242); */
     float: left;
     cursor: pointer;
     border-radius: 5px;
